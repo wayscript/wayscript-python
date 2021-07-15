@@ -5,7 +5,12 @@ jobs:
       - image: circleci/python:3.8.11
     working_directory: ~/wayscript-python
     steps:
+      - setup_remote_docker:
+          version: 20.10.6
       - checkout
       - run:
+          name: lint
+          command: docker-compose -f docker-compose.ci.yml run --rm app lint
+      - run:
           name: test
-          command: docker-compose run --rm app test
+          command: docker-compose -f docker-compose.ci.yml run --rm app test
