@@ -1,0 +1,12 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+    environment:
+      - TWINE_USERNAME=__token__
+      - TWINE_NON_INTERACTIVE=1
+      - TWINE_PASSWORD
+    stdin_open: true
+    tty: true
+
