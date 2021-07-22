@@ -22,7 +22,6 @@ def get_process():
     return data
 
 
-# are half of these just pass through calls to the integration service? what value does wayscript.context provide as a wrapper? where do we draw the line?
 def get_event():
     """Returns the event object of the execution context"""
     data = _get_process_detail_expanded_data()["event"]
