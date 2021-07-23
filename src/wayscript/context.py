@@ -36,8 +36,8 @@ def get_lair_trigger():
 
 def get_lair():
     """Returns lair metadata"""
-    lair_trigger = get_lair_trigger()
-    lair_id = lair_trigger["lair_id"]
+    process = get_process()
+    lair_id = process["lair_id"]
     client = utils.WayScriptClient()
     response = client.get_lair_detail(lair_id)
     response.raise_for_status()
