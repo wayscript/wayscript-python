@@ -15,6 +15,5 @@ ROUTES = {
     "workspaces": {"detail": f"{WORKSPACES_ROUTE}/$id"},
 }
 
-
-WAYSCRIPT_HOST = os.environ.get("WAYSCRIPT_HOST", "api.wayscript.com")
-WAYSCRIPT_VERSION = os.environ.get("WAYSCRIPT_VERSION", "v0")
+# origin is scheme + domain + port. explanation: https://stackoverflow.com/a/37366696/4293004
+WAYSCRIPT_ORIGIN = os.environ.get("WAYSCRIPT_ORIGIN", "https://api.wayscript.com")

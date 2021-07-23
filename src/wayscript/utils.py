@@ -30,7 +30,7 @@ class WayScriptClient:
         subpath_template = string.Template(settings.ROUTES[subpath][route])
         subpath = subpath_template.substitute(**template_args)
 
-        url = f"https://{settings.WAYSCRIPT_HOST}/{subpath}"
+        url = f"{settings.WAYSCRIPT_ORIGIN}/{subpath}"
         return url
 
     def get_process_detail_expanded(self, _id: str):

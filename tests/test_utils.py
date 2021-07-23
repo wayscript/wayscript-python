@@ -15,7 +15,7 @@ from wayscript import settings, utils
 def test__get_url_generates_correct_endpoints(method, _id, expected_subpath):
     """Test that wayscript client's _get_url method generates the correct expected url subpath"""
     
-    expected_url = f"https://{settings.WAYSCRIPT_HOST}/{expected_subpath}"
+    expected_url = f"{settings.WAYSCRIPT_ORIGIN}/{expected_subpath}"
     responses.add(responses.GET, expected_url,
                   json={}, status=200)
 
