@@ -6,11 +6,6 @@ from wayscript import context as ws_context
 from wayscript import settings as ws_settings
 
 
-def test_always_succeeds():
-    """This test should always succeed"""
-    pass
-
-
 @responses.activate
 @pytest.mark.parametrize(
     "response_key",
