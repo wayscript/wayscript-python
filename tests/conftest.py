@@ -83,5 +83,5 @@ def workspaces_detail_response():
         "file_object": "",
         "workspace_name": "fbb01af8-c476-4928-8921-b12e9ba91436",
         "workspace_uuid": WORKSPACE_ID,
- }
+    }
     return data
