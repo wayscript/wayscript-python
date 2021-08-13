@@ -1,6 +1,3 @@
-import uuid
-
-import pytest
 import responses
 
 from slack_sdk import WebClient
