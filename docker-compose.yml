@@ -3,9 +3,8 @@ services:
   app:
     build:
       context: .
-    working_dir: /opt/project
     volumes:
-      - .:/opt/project
+      - .:/usr/local/src/project
     environment:
       - TWINE_USERNAME=__token__
       - TWINE_NON_INTERACTIVE=1
