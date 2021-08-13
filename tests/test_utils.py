@@ -21,7 +21,7 @@ def test__get_url_generates_correct_endpoints(method, _id, expected_subpath):
 
     client = utils.WayScriptClient()
     callable = getattr(client, method)
-    response = callable(_id)
+    callable(_id)
 
     assert len(responses.calls) == 1
     assert responses.calls[0].request.url == expected_url
