@@ -1,3 +1,4 @@
+import json
 import os
 
 import pytest
@@ -95,8 +96,8 @@ def workspace_integrations_detail_response():
     data = {
         "id": WORKSPACE_INTEGRATION_ID,
         "type": "slack",
-        "credentials": {
+        "credentials": json.dumps({
             "access_token": "d259c1df-0ef0-4f62-8458-3548bbf5c28d"
-        }
+        })
     }
     return data
