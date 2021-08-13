@@ -16,6 +16,8 @@ def stub_environment():
 
 LAIR_ID = "61429be0-25a0-4030-a824-0e34163e441e"
 WORKSPACE_ID = "fbcb455f-0d49-4fb7-b6d4-44e005a3ca42"
+WORKSPACE_INTEGRATION_ID = "9b3e827e-f113-41fc-a14e-4ba53afa1707"
+ 
 
 @pytest.fixture
 def patch_client_get_url(monkeypatch):
@@ -83,5 +85,18 @@ def workspaces_detail_response():
         "file_object": "",
         "workspace_name": "fbb01af8-c476-4928-8921-b12e9ba91436",
         "workspace_uuid": WORKSPACE_ID,
+    }
+    return data
+
+
+@pytest.fixture
+def workspace_integrations_detail_response():
+    """Data from GET /workspaces-integrations/<id>"""
+    data = {
+        "id": WORKSPACE_INTEGRATION_ID,
+        "type": "slack",
+        "credentials": {
+            "access_token": "d259c1df-0ef0-4f62-8458-3548bbf5c28d"
+        }
     }
     return data
