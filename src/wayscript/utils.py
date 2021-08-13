@@ -39,6 +39,12 @@ class WayScriptClient:
         response = self.session.get(url)
         return response
 
+    def get_workspace_integration_detail(self, _id: str):
+        """Request a workspace-integrations detail"""
+        url = self._get_url(subpath="workspace-integrations", route="detail", template_args={"id": _id})
+        response = self.session.get(url)
+        return response
+
     def get_lair_detail(self, _id: str):
         """Request lair detail"""
         url = self._get_url(subpath="lairs", route="detail", template_args={"id": _id})
