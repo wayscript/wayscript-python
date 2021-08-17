@@ -3,5 +3,5 @@
 set -e
 set -x
 
-pipe install -e .
+pip install -e .
 pytest

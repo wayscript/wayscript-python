@@ -1,9 +1,7 @@
 import pytest
 import responses
-import requests
 
 from wayscript import context as ws_context
-from wayscript import settings as ws_settings
 
 
 @responses.activate
