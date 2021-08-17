@@ -101,3 +101,30 @@ def workspace_integrations_detail_response():
         })
     }
     return data
+
+@pytest.fixture
+def workspace_integration_sql_credentials():
+    """Data for sql credentials"""
+    data = {
+        "database_name": "my_db",
+        "database_user": "zach",
+        "database_port": 15432,
+        "database_password": "very-secret-password",
+        "database_host": "host.docker.internal"
+    }
+    return data
+
+
+@pytest.fixture
+def workspace_integrations_detail_response_sql(workspace_integration_sql_credentials):
+    """
+    Data from GET /workspaces-integrations/<id>
+    
+    For type=sql
+    """
+    data = {
+        "id": WORKSPACE_INTEGRATION_ID,
+        "type": "sql",
+        "credentials": json.dumps(workspace_integration_sql_credentials),
+    }
+    return data
