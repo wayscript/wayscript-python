@@ -23,7 +23,9 @@ class WayScriptClient:
     def __init__(self, *args, **kwargs):
         """Init a wayscript client"""
         self.session = requests.Session()
-        self.session.headers["authorization"] = get_process_execution_user_token()
+        access_token =  get_process_execution_user_token()
+        self.session.headers["authorization"] = f"Bearer {access_token}"
+        self.session.headers["content-type"] = "application/json"
     
     def _get_url(self, subpath: str, route: str, template_args: dict=None):
         """Generate an url"""
