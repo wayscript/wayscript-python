@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 slack-sdk = "*"
 psycopg2 = "*"
+pymssql = "*"
+mysql-connector-python = "*"
 
 [dev-packages]
 pytest = "*"
