@@ -58,3 +58,13 @@ class WayScriptClient:
         url = self._get_url(subpath="workspaces", route="detail", template_args={"id": _id})
         response = self.session.get(url)
         return response
+
+    def post_webhook_http_trigger_response(self, _id: str):
+        """
+        Post an http trigger response
+        
+        _id: process id launched by http trigger
+        """
+        url = self._get_url(subpath="webhooks", route="http_trigger_response", template_args={"id": _id})
+        response = self.session.post(url)
+        return response
