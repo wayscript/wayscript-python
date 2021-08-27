@@ -7,6 +7,13 @@ def send_response(data: dict=None, headers: dict=None, status_code: int=None):
     assert headers, "headers kwarg is required"
     assert status_code, "status_code kwarg is required"
     wayscript_client = utils.WayScriptClient()
-    response = wayscript_client.get_workspace_integration_detail(_id)
+    process_id = utils.get_process_id()
+    payload = {
+        "data": data,
+        "headers": headers,
+        "status_code": status_code,
+    }
+    response = wayscript_client.post_webhook_http_trigger_response(process_id, payload)
     response.raise_for_status()
-    workspace_integration_data = response.json()
+
+    return response
