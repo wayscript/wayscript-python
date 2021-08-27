@@ -8,7 +8,7 @@ from . import settings
 
 def get_process_execution_user_token():
     """Return the auth token of the user this process is executing on behalf of"""
-    token = os.environ["WAYSCRIPT_EXECUTION_USER_TOKEN"]
+    token = os.environ.get("WAYSCRIPT_EXECUTION_USER_TOKEN")
     return token
 
 
