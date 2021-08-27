@@ -12,10 +12,10 @@ def get_process_execution_user_token():
     return token
 
 
-def get_process_uuid():
+def get_process_id():
     """Return uuid of current container execution"""
-    process_uuid = os.environ["WAYSCRIPT_PROCESS_UUID"]
-    return process_uuid
+    process_id = os.environ["WS_PROCESS_ID"]
+    return process_id
 
 
 class WayScriptClient:
