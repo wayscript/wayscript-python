@@ -16,4 +16,4 @@ sed -i "s/$VERSION_PLACEHOLDER/version='$VERSION',/" $PROJECT_DIR/setup.py
 
 DIST_DIR=$PROJECT_DIR/dist
 python setup.py sdist --dist-dir $DIST_DIR
-twine upload dist/wayscript-$VERSION.tar.gz
+twine upload ./dist/wayscript-$VERSION.tar.gz
