@@ -8,14 +8,14 @@ from . import settings
 
 def get_process_execution_user_token():
     """Return the auth token of the user this process is executing on behalf of"""
-    token = os.environ["WAYSCRIPT_EXECUTION_USER_TOKEN"]
+    token = os.environ.get("WAYSCRIPT_EXECUTION_USER_TOKEN")
     return token
 
 
-def get_process_uuid():
+def get_process_id():
     """Return uuid of current container execution"""
-    process_uuid = os.environ["WAYSCRIPT_PROCESS_UUID"]
-    return process_uuid
+    process_id = os.environ["WS_PROCESS_ID"]
+    return process_id
 
 
 class WayScriptClient:
@@ -57,4 +57,15 @@ class WayScriptClient:
         """Request workspace detail"""
         url = self._get_url(subpath="workspaces", route="detail", template_args={"id": _id})
         response = self.session.get(url)
+        return response
+
+    def post_webhook_http_trigger_response(self, _id: str, payload: dict=None):
+        """
+        Post an http trigger response
+
+        _id: process id launched by http trigger
+        payload: a payload describing how to respond to the http trigger's request
+        """
+        url = self._get_url(subpath="webhooks", route="http_trigger_response", template_args={"id": _id})
+        response = self.session.post(url, json=payload)
         return response

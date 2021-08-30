@@ -9,7 +9,7 @@ def stub_environment():
     
     stubbed_environment_variables = [
         "WAYSCRIPT_EXECUTION_USER_TOKEN",
-        "WAYSCRIPT_PROCESS_UUID",
+        "WS_PROCESS_ID",
     ]
 
     for var in stubbed_environment_variables:
