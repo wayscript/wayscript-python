@@ -17,7 +17,7 @@ setuptools.setup(
     description="WayScript gives you flexible building blocks to seamlessly integrate, automate and host tools in the cloud.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=['requests>=2.22.0'],
+    install_requires=['slack-sdk', 'requests>=2.22.0'],
     url="https://github.com/wayscript/wayscript-python",
     package_dir={'': 'src'},
     packages=["wayscript"],
