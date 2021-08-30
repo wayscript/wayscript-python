@@ -6,9 +6,9 @@ from . import utils
 @lru_cache()
 def _get_process_detail_expanded_data() -> dict:
     """Wrapper to cache data from process_detail_expanded call"""
-    process_uuid = utils.get_process_uuid()
+    process_id = utils.get_process_id()
     client = utils.WayScriptClient()
-    response = client.get_process_detail_expanded(process_uuid)
+    response = client.get_process_detail_expanded(process_id)
     response.raise_for_status()
     return response.json()
 
