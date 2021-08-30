@@ -20,7 +20,7 @@ setuptools.setup(
     install_requires=['slack-sdk', 'requests>=2.22.0'],
     url="https://github.com/wayscript/wayscript-python",
     package_dir={'': 'src'},
-    packages=["wayscript"],
+    packages=setuptools.find_packages(where="src"),
     license='MIT',
     classifiers=[
         "Development Status :: 4 - Beta",
