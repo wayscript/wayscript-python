@@ -6,8 +6,9 @@ services:
     volumes:
       - .:/usr/local/src/project
     environment:
-      - TWINE_USERNAME=__token__
+#       - TWINE_USERNAME=__token__
       - TWINE_NON_INTERACTIVE=1
+      - TWINE_REPOSITORY_URL=http://host.docker.internal:8081/repository/jonathan-local-pypi/
       - TWINE_PASSWORD
       - WAYSCRIPT_ORIGIN
     env_file:
