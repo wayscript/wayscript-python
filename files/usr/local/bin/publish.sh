@@ -4,6 +4,7 @@ set -e
 set -x
 
 PROJECT_DIR=/usr/local/src/project
+pwd
 
 # set version here. tag-version will blow the script up if it is not a clean working copy.
 VERSION=$(tag-version)
@@ -16,4 +17,5 @@ sed -i "s/$VERSION_PLACEHOLDER/version='$VERSION',/" $PROJECT_DIR/setup.py
 
 DIST_DIR=$PROJECT_DIR/dist
 python setup.py sdist --dist-dir $DIST_DIR
+ls -la
 twine upload ./dist/wayscript-$VERSION.tar.gz
