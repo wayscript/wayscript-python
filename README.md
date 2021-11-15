@@ -1,5 +1,13 @@
 # wayscript-python
 
+## Context
+
+```
+from wayscript import context
+
+event = context.get_event()
+```
+
 ## Triggers
 
 ### HTTP Triggers

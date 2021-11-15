@@ -3,7 +3,7 @@ Module for settings and configs
 """
 import os
 
-
+AUTH_ROUTE = "auth"
 PROCESSES_ROUTE = "processes"
 LAIRS_ROUTE = "lairs"
 WEBHOOKS = "webhooks"
@@ -13,6 +13,7 @@ WORKSPACE_INTEGRATIONS_ROUTE = "workspace-integrations"
 
 
 ROUTES = {
+    "auth": {"refresh": f"{AUTH_ROUTE}/refresh"},
     "lairs": {"detail": f"{LAIRS_ROUTE}/$id"},
     "processes": { "detail_expanded": f"{PROCESSES_ROUTE}/$id/detail"},
     "webhooks": {"http_trigger_response": f"{WEBHOOKS}/http-trigger/response/$id"},
