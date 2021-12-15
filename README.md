@@ -8,6 +8,13 @@ from wayscript import context
 event = context.get_event()
 ```
 
+### Checking user by application key
+```
+from wayscript import context, utils
+
+application_key = utils.get_application_key()
+user = context.get_user_by_application_key(application_key)
+```
 ## Triggers
 
 ### HTTP Triggers
