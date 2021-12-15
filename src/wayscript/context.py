@@ -53,3 +53,14 @@ def get_workspace():
     response.raise_for_status()
     data = response.json()
     return data
+
+
+def get_user_by_application_key(application_key: str) -> dict:
+    """Return a user object for the given application key"""
+    lair_data = get_lair()
+    workspace_id = lair_data["workspace_id"]
+    client = utils.WayScriptClient()
+    response = client.get_user_detail_by_application_key(application_key, workspace_id)
+    response.raise_for_status()
+    data = response.json()
+    return data
