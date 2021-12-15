@@ -36,3 +36,12 @@ def test_get_workspace(patch_client_get_url, lairs_detail_response, workspaces_d
 
     workspace = ws_context.get_workspace()
     assert workspace == workspaces_detail_response
+
+@responses.activate
+def test_get_user_by_application_key(patch_client_get_url, lairs_detail_response, user_detail_response, monkeypatch):
+    responses.add(responses.GET, patch_client_get_url,
+                  json=user_detail_response, status=200)
+
+    monkeypatch.setattr(ws_context, "get_lair", lambda *args, **kwargs: lairs_detail_response)
+
+    assert ws_context.get_user_by_application_key("my-application-key") == user_detail_response

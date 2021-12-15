@@ -80,6 +80,20 @@ def lairs_detail_response():
 
 
 @pytest.fixture
+def user_detail_response():
+    """Data representing a response from GET /workspaces/<id>/users/self"""
+    data = {
+        "avatar": "https://lh3.googleusercontent.com/a-/BOh14LjZkR7iuACWXfkCrZX3nixJCdRUc_3PYP9wu7CA=s96-c",
+        "created_date": "2021-12-15T03:18:23.865839",
+        "email": "foobar@fooey.com",
+        "first_name": "John",
+        "id": "705c088f-1211-4c0e-a520-1d5f76b6940e",
+        "last_name": "Jingleheimerschmidt"
+    }
+    return data
+
+
+@pytest.fixture
 def workspaces_detail_response():
     """Data from GET /workspaces/<id>"""
     data = {
