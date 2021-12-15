@@ -120,5 +120,5 @@ class WayScriptClient:
         Request user detail using its application key
         """
         url = self._get_url(subpath="workspaces", route="user_application_key_detail", template_args={"id": workspace_id})
-        response = self.session.get(url, headers={"authorization": application_key})
+        response = self.session.get(url, headers={"authorization": f"Bearer {application_key}"})
         return response
