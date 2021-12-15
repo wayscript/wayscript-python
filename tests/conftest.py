@@ -64,16 +64,16 @@ def processes_detail_expanded_response():
 
 @pytest.fixture
 def lairs_detail_response():
-    """Data representing a response from `GET /lairs/<lair_uuid>`"""
+    """Data representing a response from `GET /lairs/<id>`"""
     data = {
         "created_date": "Thu, 22 Jul 2021 15:40:23 GMT",
         "file_object": "",
         "internal_id": "122",
         "lair_manager": "0faa1b77-0e54-4d50-83d4-412a972bc99b",
         "lair_name": "a6ed446a-2cb6-4421-98f5-3352020f2db8",
-        "lair_uuid": LAIR_ID,
+        "id": LAIR_ID,
         "last_run_date": "Thu, 22 Jul 2021 15:40:23 GMT",
-        "workspace_uuid": WORKSPACE_ID,
+        "workspace_id": WORKSPACE_ID,
     }
 
     return data
@@ -85,7 +85,7 @@ def workspaces_detail_response():
     data = {
         "file_object": "",
         "workspace_name": "fbb01af8-c476-4928-8921-b12e9ba91436",
-        "workspace_uuid": WORKSPACE_ID,
+        "workspace_id": WORKSPACE_ID,
     }
     return data
 
