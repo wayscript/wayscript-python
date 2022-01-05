@@ -47,9 +47,20 @@ def get_lair():
 def get_workspace():
     """Return workspace metadata"""
     lair_data = get_lair()
-    workspace_id = lair_data["workspace_uuid"]
+    workspace_id = lair_data["workspace_id"]
     client = utils.WayScriptClient()
     response = client.get_workspace_detail(workspace_id)
+    response.raise_for_status()
+    data = response.json()
+    return data
+
+
+def get_user_by_application_key(application_key: str) -> dict:
+    """Return a user object for the given application key"""
+    lair_data = get_lair()
+    workspace_id = lair_data["workspace_id"]
+    client = utils.WayScriptClient()
+    response = client.get_user_detail_by_application_key(application_key, workspace_id)
     response.raise_for_status()
     data = response.json()
     return data

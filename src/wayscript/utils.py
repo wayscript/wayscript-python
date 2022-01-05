@@ -26,6 +26,10 @@ def get_refresh_token():
     refresh_token = os.environ["WAYSCRIPT_EXECUTION_USER_REFRESH_TOKEN"]
     return refresh_token
 
+def get_application_key():
+    application_key = os.environ["WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY"]
+    return application_key
+
 
 def retry_on_401_wrapper(f):
 
@@ -109,4 +113,12 @@ class WayScriptClient:
         """
         url = self._get_url(subpath="webhooks", route="http_trigger_response", template_args={"id": _id})
         response = self.session.post(url, json=payload)
+        return response
+
+    def get_user_detail_by_application_key(self, application_key: str, workspace_id: str):
+        """
+        Request user detail using its application key
+        """
+        url = self._get_url(subpath="workspaces", route="user_application_key_detail", template_args={"id": workspace_id})
+        response = self.session.get(url, headers={"authorization": f"Bearer {application_key}"})
         return response
