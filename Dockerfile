@@ -1,8 +1,12 @@
-FROM python:3.8.11-buster AS base
+FROM python:3.10 AS base
 LABEL org.wayscript.image.authors="founders@wayscript.com"
+
+RUN apt-get update && apt-get -yu dist-upgrade
 
 ENV SRC_DIR /usr/local/src/project
 WORKDIR ${SRC_DIR}
+
+RUN pip3 install --upgrade pip
 
 RUN pip3 install pipenv
 

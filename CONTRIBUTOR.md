@@ -4,6 +4,8 @@
 
 To speed up development cycles you can run tests and linting locally with:
 ```
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
 docker-compose run --rm app lint
 docker-compose run --rm app test
 ```

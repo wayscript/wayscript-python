@@ -10,10 +10,9 @@ services:
       - TWINE_NON_INTERACTIVE=1
       - TWINE_PASSWORD
       - WAYSCRIPT_ORIGIN
-    env_file:
+    # env_file:
       # if you want to test publishing, put your test pypi creds in .env.pypi-test
       # - ./.env.pypi-test
-      - ./env.meierj.local
     stdin_open: true
     tty: true
 
