@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/wayscript-python
     steps:
       - setup_remote_docker:
-          version: 20.10.6
+          version: 20.10.18
       - checkout
       - run:
           name: lint
