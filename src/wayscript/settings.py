@@ -4,8 +4,9 @@ Module for settings and configs
 import os
 
 AUTH_ROUTE = "auth"
-PROCESSES_ROUTE = "processes"
+FILES_ROUTE = "files"
 LAIRS_ROUTE = "lairs"
+PROCESSES_ROUTE = "processes"
 WEBHOOKS = "webhooks"
 WORKSPACES_ROUTE = "workspaces"
 WORKSPACE_INTEGRATIONS_ROUTE = "workspace-integrations"
@@ -14,6 +15,7 @@ WORKSPACE_INTEGRATIONS_ROUTE = "workspace-integrations"
 
 ROUTES = {
     "auth": {"refresh": f"{AUTH_ROUTE}/refresh"},
+    "files": {"set_secret": f'{FILES_ROUTE}/lairs/$id/secrets'},
     "lairs": {"detail": f"{LAIRS_ROUTE}/$id"},
     "processes": { "detail_expanded": f"{PROCESSES_ROUTE}/$id/detail"},
     "webhooks": {"http_trigger_response": f"{WEBHOOKS}/http-trigger/response/$id"},

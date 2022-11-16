@@ -36,8 +36,38 @@ http_trigger.send_response(data=payload, headers=headers, status_code=status_cod
 To connect to a postgres resource, use the following snippet:
 ```
 import psycopg2
-from wayscript.ingegrations import sql
+from wayscript.integrations import sql
 
 kwargs = sql.get_psycopg2_connection_kwargs(_id)
 connection = psycopg2.connect(**kwargs)
+```
+
+## Secrets
+
+### Create/Update Secret
+
+To create a new secret, or update an existing one:
+```
+from wayscript import secret_manager
+
+my_secret_value = "an application key or other private information"
+secret_manager.set_secret('my_secret_key', my_secret_value)
+    
+```
+
+To test an existing secret, and update if the secret is no longer valid (expired authorization token):
+```
+import os
+from wayscript import secret_manager
+
+# Retrieve existing key from secret
+auth_key = os.getenv('AUTH_KEY_MAY_EXPIRE')
+
+# Test connection to service using auth_key
+if not authorized:
+    # Get new auth_key from service
+    auth_key = 'New Key From Service Request'
+    secret_manager.set_secret('AUTH_KEY_MAY_EXPIRE', auth_key)
+
+# Continue flow as normal
 ```

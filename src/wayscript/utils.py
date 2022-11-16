@@ -122,3 +122,16 @@ class WayScriptClient:
         url = self._get_url(subpath="workspaces", route="user_application_key_detail", template_args={"id": workspace_id})
         response = self.session.get(url, headers={"authorization": f"Bearer {application_key}"})
         return response
+    
+    def set_lair_secret(self, _id: str, secret_key: str, secret_val: str):
+        """
+        Create a new secret or update an existing secret
+        
+        _id: lair id
+        secret_key: key to update secret for
+        secret_val: value to set secret to (will be encrypted)
+        """
+        payload = {"key": secret_key, "value": secret_val}
+        url = self._get_url(subpath="files", route="set_secret", template_args={"id": _id})
+        response = self.session.post(url, json=payload)
+        return response
