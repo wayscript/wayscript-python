@@ -1,4 +1,3 @@
-import pytest
 import responses
 
 from wayscript import secret_manager as ws_secret_manager
