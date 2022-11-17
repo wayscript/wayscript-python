@@ -8,6 +8,6 @@ def set_secret(secret_key: str, secret_val: str) -> None:
     response = client.set_lair_secret(lair_id, secret_key, secret_val)
 
     # Handle unhelpful error cases
-    if response.code == 403:
+    if response.status_code == 403:
         raise errors.UnauthorizedUserError
     response.raise_for_status()
