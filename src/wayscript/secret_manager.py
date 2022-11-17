@@ -10,10 +10,6 @@ def set_secret(secret_key: str, secret_val: str) -> None:
     response = client.set_lair_secret(lair_id, secret_key, secret_val)
 
     # Handle unhelpful error cases
-    try:
-        response.raise_for_status()
-    except HTTPError as e:
-        if response.code == 403:
-            raise errors.UnauthorizedUserError from None
-        else:
-            raise e
+    if response.code == 403:
+        raise errors.UnauthorizedUserError
+    response.raise_for_status()
