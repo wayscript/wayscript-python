@@ -14,6 +14,6 @@ def set_secret(secret_key: str, secret_val: str) -> None:
         response.raise_for_status()
     except HTTPError as e:
         if response.code == 403:
-            raise errors.UnauthorizedUserError
+            raise errors.UnauthorizedUserError from None
         else:
             raise e
