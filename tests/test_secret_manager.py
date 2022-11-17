@@ -1,3 +1,4 @@
+import pytest
 import responses
 
 from wayscript import secret_manager
@@ -17,7 +18,5 @@ def test_set_secret_unauthorized_user(patch_client_get_url):
     """Test that set secret raises the appropriate error for unauthorized users"""
     responses.add(responses.POST, patch_client_get_url, json={}, status=403)
 
-    try:
+    with pytest.raises(UnauthorizedUserError):
         secret_manager.set_secret("test_key", "test_val")
-    except UnauthorizedUserError:
-        assert True
