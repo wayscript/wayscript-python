@@ -1,5 +1,3 @@
-from urllib.error import HTTPError
-
 from . import utils, context, errors
 
 
