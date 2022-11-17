@@ -12,9 +12,11 @@ def get_process_execution_user_token():
     token = os.environ.get("WAYSCRIPT_EXECUTION_USER_TOKEN")
     return token
 
+
 def set_process_execution_user_token(value: str):
     os.environ["WAYSCRIPT_EXECUTION_USER_TOKEN"] = value
     return value
+
 
 def get_process_id():
     """Return uuid of current container execution"""
@@ -25,6 +27,7 @@ def get_process_id():
 def get_refresh_token():
     refresh_token = os.environ["WAYSCRIPT_EXECUTION_USER_REFRESH_TOKEN"]
     return refresh_token
+
 
 def get_application_key():
     application_key = os.environ["WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY"]
@@ -51,11 +54,11 @@ class WayScriptClient:
     def __init__(self, *args, **kwargs):
         """Init a wayscript client"""
         self.session = requests.Session()
-        access_token =  get_process_execution_user_token()
+        access_token = get_process_execution_user_token()
         self.session.headers["authorization"] = f"Bearer {access_token}"
         self.session.headers["content-type"] = "application/json"
-    
-    def _get_url(self, subpath: str, route: str, template_args: dict=None):
+
+    def _get_url(self, subpath: str, route: str, template_args: dict = None):
         """Generate an url"""
         subpath_template_str = settings.ROUTES[subpath][route]
         subpath_template = string.Template(subpath_template_str)
@@ -104,7 +107,7 @@ class WayScriptClient:
         return response
 
     @retry_on_401_wrapper
-    def post_webhook_http_trigger_response(self, _id: str, payload: dict=None):
+    def post_webhook_http_trigger_response(self, _id: str, payload: dict = None):
         """
         Post an http trigger response
 
@@ -122,11 +125,11 @@ class WayScriptClient:
         url = self._get_url(subpath="workspaces", route="user_application_key_detail", template_args={"id": workspace_id})
         response = self.session.get(url, headers={"authorization": f"Bearer {application_key}"})
         return response
-    
+
     def set_lair_secret(self, _id: str, secret_key: str, secret_val: str):
         """
         Create a new secret or update an existing secret
-        
+
         _id: lair id
         secret_key: key to update secret for
         secret_val: value to set secret to (will be encrypted)

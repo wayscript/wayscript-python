@@ -12,17 +12,16 @@ WORKSPACES_ROUTE = "workspaces"
 WORKSPACE_INTEGRATIONS_ROUTE = "workspace-integrations"
 
 
-
 ROUTES = {
     "auth": {"refresh": f"{AUTH_ROUTE}/refresh"},
     "files": {"set_secret": f'{FILES_ROUTE}/lairs/$id/secrets'},
     "lairs": {"detail": f"{LAIRS_ROUTE}/$id"},
-    "processes": { "detail_expanded": f"{PROCESSES_ROUTE}/$id/detail"},
+    "processes": {"detail_expanded": f"{PROCESSES_ROUTE}/$id/detail"},
     "webhooks": {"http_trigger_response": f"{WEBHOOKS}/http-trigger/response/$id"},
     "workspaces": {
         "detail": f"{WORKSPACES_ROUTE}/$id",
         "user_application_key_detail": f"{WORKSPACES_ROUTE}/$id/users/self",
-        },
+    },
     "workspace-integrations": {"detail": f"{WORKSPACE_INTEGRATIONS_ROUTE}/$id"},
 }
 

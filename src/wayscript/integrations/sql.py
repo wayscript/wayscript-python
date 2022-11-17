@@ -5,11 +5,11 @@ from wayscript.errors import MissingCredentialsError
 
 
 PSYCOPG2_CONNECTION_KWARG_MAP = {
-        "dbname": "database_name",
-        "user": "database_user",
-        "password": "database_password",
-        "host": "database_host",
-        "port": "database_port",
+    "dbname": "database_name",
+    "user": "database_user",
+    "password": "database_password",
+    "host": "database_host",
+    "port": "database_port",
 }
 
 
@@ -35,7 +35,7 @@ MYSQL_CONNECTION_KWARG_MAP = {
 def get_connection_kwargs(_id: str, credentials_mapping: dict) -> dict:
     """
     Return connection kwargs
-    
+
     If you want to instantiate your own client, use this method.
     """
     wayscript_client = utils.WayScriptClient()
@@ -57,13 +57,16 @@ def get_connection_kwargs(_id: str, credentials_mapping: dict) -> dict:
 
     return kwargs
 
+
 def get_psycopg2_connection_kwargs(_id: str) -> dict:
     """Get connection kwargs for psycopg2"""
     return get_connection_kwargs(_id, credentials_mapping=PSYCOPG2_CONNECTION_KWARG_MAP)
 
+
 def get_mssql_connection_kwargs(_id: str) -> dict:
     """Get connection kwargs for SQL Server connection via mssql driver"""
     return get_connection_kwargs(_id, credentials_mapping=MSSQL_CONNECTION_KWARG_MAP)
+
 
 def get_mysql_connection_kwargs(_id: str) -> dict:
     """Return connection kwargs for MySQL connection via mysql driver"""
