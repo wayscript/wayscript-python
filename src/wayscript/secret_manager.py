@@ -2,7 +2,7 @@ from urllib.error import HTTPError
 
 from . import utils, context, errors
 
-def set_secret(secret_key: str, secret_val: str) -> bool:
+def set_secret(secret_key: str, secret_val: str) -> None:
     process_details = context.get_process()
     lair_id = process_details["lair_id"]
     client = utils.WayScriptClient()
@@ -16,5 +16,3 @@ def set_secret(secret_key: str, secret_val: str) -> bool:
             raise errors.UnauthorizedUserError
         else:
             raise e
-            
-    return True
