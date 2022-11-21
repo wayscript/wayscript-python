@@ -76,6 +76,18 @@ class WayScriptClient:
         self.session.headers["authorization"] = f"Bearer {access_token}"
 
     @retry_on_401_wrapper
+    def _send_terminal_output(self, process_id: str, service_id: str, output: str):
+        """Send terminal output for current process, for WayScript internal use"""
+        payload = {
+            'service_id': service_id,
+            'process_id': process_id,
+            'output': output
+        }
+        url = self._get_url(subpath="terminal", route="output")
+        response = self.session.post(url, json=payload)
+        return response
+
+    @retry_on_401_wrapper
     def get_process_detail_expanded(self, _id: str):
         """Request process expanded detail endpoint"""
         url = self._get_url(subpath="processes", route="detail_expanded", template_args={"id": _id})
