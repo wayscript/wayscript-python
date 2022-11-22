@@ -1,7 +1,7 @@
 FROM python:3.10 AS base
 LABEL org.wayscript.image.authors="founders@wayscript.com"
 
-RUN apt-get update && apt-get -yu dist-upgrade
+RUN apt-get update && apt-get -yu dist-upgrade freetds-dev
 
 ENV SRC_DIR /usr/local/src/project
 WORKDIR ${SRC_DIR}
