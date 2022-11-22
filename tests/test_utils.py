@@ -1,5 +1,7 @@
 import pytest
 import responses
+import json
+from uuid import uuid4
 
 from wayscript import settings, utils
 
@@ -30,3 +32,25 @@ def test__get_url_generates_correct_endpoints(method, _id, expected_subpath, htt
     assert responses.calls[0].request.url == expected_url
 
 
+@responses.activate
+def test__send_terminal_output():
+    """Test that _send_terminal_output sends the correct payload to the proper url"""
+    process_id = str(uuid4())
+    service_id = str(uuid4())
+    output = "Hello World"
+
+    expected_payload = {
+        "process_id": process_id,
+        "service_id": service_id,
+        "output": output,
+    }
+    expected_url = f"{settings.WAYSCRIPT_ORIGIN}/terminal/output"
+    responses.add("POST", expected_url,
+                  json={}, status=200)
+
+    client = utils.WayScriptClient()
+    client._send_terminal_output(process_id, service_id, output)
+
+    assert len(responses.calls) == 1
+    assert responses.calls[0].request.url == expected_url
+    assert json.loads(responses.calls[0].request.body) == expected_payload
