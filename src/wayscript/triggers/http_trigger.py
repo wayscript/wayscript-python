@@ -1,7 +1,7 @@
 from wayscript import utils
 
 
-def send_response(data: dict=None, headers: dict=None, status_code: int=None):
+def send_response(data: dict = None, headers: dict = None, status_code: int = None):
     """Send response to http trigger endpoint"""
     assert data, "data kwarg is required"
     assert headers, "headers kwarg is required"

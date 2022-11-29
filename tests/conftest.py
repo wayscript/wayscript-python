@@ -6,7 +6,6 @@ import pytest
 
 @pytest.fixture(autouse=True)
 def stub_environment():
-    
     stubbed_environment_variables = [
         "WAYSCRIPT_EXECUTION_USER_TOKEN",
         "WS_PROCESS_ID",
@@ -15,10 +14,11 @@ def stub_environment():
     for var in stubbed_environment_variables:
         os.environ[var] = "TEST_SETTING"
 
+
 LAIR_ID = "61429be0-25a0-4030-a824-0e34163e441e"
 WORKSPACE_ID = "fbcb455f-0d49-4fb7-b6d4-44e005a3ca42"
 WORKSPACE_INTEGRATION_ID = "9b3e827e-f113-41fc-a14e-4ba53afa1707"
- 
+
 
 @pytest.fixture
 def patch_client_get_url(monkeypatch):
@@ -57,8 +57,8 @@ def processes_detail_expanded_response():
             "service_id": "42621a34-cbab-48f3-a3d2-400d83868caf",
             "status": None,
             "trigger_id": "081f3cfe-b9ba-4e6c-9f9a-d20206d3a3ee"
-             }
         }
+    }
     return data
 
 
@@ -116,6 +116,7 @@ def workspace_integrations_detail_response():
     }
     return data
 
+
 @pytest.fixture
 def workspace_integration_sql_credentials():
     """Data for sql credentials"""
@@ -133,7 +134,7 @@ def workspace_integration_sql_credentials():
 def workspace_integrations_detail_response_sql(workspace_integration_sql_credentials):
     """
     Data from GET /workspaces-integrations/<id>
-    
+
     For type=sql
     """
     data = {

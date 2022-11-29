@@ -21,7 +21,7 @@ def get_client_for_workspace_integration(_id: str) -> WebClient:
         access_token = credentials.get("access_token")
     except json.decoder.JSONDecodeError:
         access_token = None
-    
+
     if not access_token:
         raise MissingCredentialsError(f"No credentials found for {_id}")
     else:
