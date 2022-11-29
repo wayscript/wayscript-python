@@ -10,6 +10,7 @@ PROCESSES_ROUTE = "processes"
 WEBHOOKS = "webhooks"
 WORKSPACES_ROUTE = "workspaces"
 WORKSPACE_INTEGRATIONS_ROUTE = "workspace-integrations"
+TERMINAL_ROUTE = "terminal"
 
 
 ROUTES = {
@@ -17,6 +18,7 @@ ROUTES = {
     "files": {"set_secret": f'{FILES_ROUTE}/lairs/$id/secrets'},
     "lairs": {"detail": f"{LAIRS_ROUTE}/$id"},
     "processes": {"detail_expanded": f"{PROCESSES_ROUTE}/$id/detail"},
+    "terminal": {"output": f"{TERMINAL_ROUTE}/output"},
     "webhooks": {"http_trigger_response": f"{WEBHOOKS}/http-trigger/response/$id"},
     "workspaces": {
         "detail": f"{WORKSPACES_ROUTE}/$id",
