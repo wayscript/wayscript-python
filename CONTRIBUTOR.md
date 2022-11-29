@@ -17,8 +17,13 @@ To exactly replicate the CI steps, add the `-f docker-compose.ci.yml` arg to the
 
 To cut a new version, follow these steps:
 
-- create and merge final feature branch updating `CHANGELOG.md`
-- tag final commit hash with `git tag <VERSION>`, e.g. `git tag 0.1.3`.
+(the first time you do this)
+- get `maintainer` access to the `wayscript` project on pypi
+- create an API key for the project (save for future use)
+(all times)
+- run `export TWINE_PASSWORD="<your api key>"` in terminal to set up environment variable
+- tag final commit hash with `git tag <VERSION>`, e.g. `git tag 0.3.1`.
+- in `publish.sh`, update `VERSION="<your version tag>"`
 - publish to pypi with:
 ```
 docker-compose run --rm app bash publish.sh
