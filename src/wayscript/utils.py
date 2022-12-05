@@ -159,6 +159,7 @@ class WayScriptClient:
         file_path: file path of file, relative to storage root
         '''
         url = self._get_url(subpath='storage', route='read', template_args={"path": path, "workspace_name": workspace_name})
+        print(f"url is {url}")
         response = self.session.get(url)
         return response
 
@@ -171,5 +172,6 @@ class WayScriptClient:
         bytes: file contents to write
         '''
         url = self._get_url(subpath='storage', route='read', template_args={"path": path, "workspace_name": workspace_name})
+        print(f"url is {url}")
         response = self.session.post(url, files={'file' : file_object})
         return response
