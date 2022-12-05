@@ -5,7 +5,7 @@ import string
 import requests
 
 from . import settings
-
+from typing import BinaryIO
 
 def get_process_execution_user_token():
     """Return the auth token of the user this process is executing on behalf of"""
@@ -149,4 +149,27 @@ class WayScriptClient:
         payload = {"key": secret_key, "value": secret_val}
         url = self._get_url(subpath="files", route="set_secret", template_args={"id": _id})
         response = self.session.post(url, json=payload)
+        return response
+
+    def read_storage_file(self, workspace_name: str, path: str):
+        '''
+        return file contents of specified workspace storage file
+
+        workspace_name: name of workspace
+        file_path: file path of file, relative to storage root
+        '''
+        url = self._get_url(subpath='storage', route='read', template_args={"path": path, "workspace_name": workspace_name})
+        response = self.session.get(url)
+        return response
+
+    def write_storage_file(self, workspace_name: str, path: str, file_object: BinaryIO):
+        '''
+        write file contents of specified workspace storage file
+
+        workspace_name: name of workspace
+        file_path: file path of file, relative to storage root
+        bytes: file contents to write
+        '''
+        url = self._get_url(subpath='storage', route='read', template_args={"path": path, "workspace_name": workspace_name})
+        response = self.session.post(url, files={'file' : file_object})
         return response

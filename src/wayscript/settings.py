@@ -11,6 +11,7 @@ WEBHOOKS = "webhooks"
 WORKSPACES_ROUTE = "workspaces"
 WORKSPACE_INTEGRATIONS_ROUTE = "workspace-integrations"
 TERMINAL_ROUTE = "terminal"
+STORAGE_ROUTE = "storage"
 
 
 ROUTES = {
@@ -25,6 +26,10 @@ ROUTES = {
         "user_application_key_detail": f"{WORKSPACES_ROUTE}/$id/users/self",
     },
     "workspace-integrations": {"detail": f"{WORKSPACE_INTEGRATIONS_ROUTE}/$id"},
+    "storage": {
+        "read": f"{STORAGE_ROUTE}/$workspace_name/$path",
+        "write": f"{STORAGE_ROUTE}/$workspace_name/$path",
+    }
 }
 
 # origin is scheme + domain + port. explanation: https://stackoverflow.com/a/37366696/4293004
