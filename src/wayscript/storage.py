@@ -1,7 +1,7 @@
 from . import context
 from .utils import WayScriptClient
 from io import BufferedReader, BytesIO
-
+VERSION_STRING='1'
 def write_bytes_to_storage(storage_file_path: str, bytes: bytes):
     print('in library print')
     workspace_info = context.get_workspace()
