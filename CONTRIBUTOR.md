@@ -19,6 +19,8 @@ To cut a new version, follow these steps:
 
 - create and merge final feature branch updating `CHANGELOG.md`
 - tag final commit hash with `git tag <VERSION>`, e.g. `git tag 0.1.3`.
+- declare the `VERSION` veriable in `usr/local/bin/publish.sh` to the same version, e.g. `VERSION=0.1.3`
+- make sure your terminal ENV variables have `TWINE_PASSWORD` set to the proper PyPi password
 - publish to pypi with:
 ```
 docker-compose run --rm app bash publish.sh
