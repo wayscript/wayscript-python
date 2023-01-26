@@ -44,6 +44,11 @@ def get_lair():
     return data
 
 
+def get_lair_url():
+    """Returns lair URL"""
+    return utils.get_lair_url()
+
+
 def get_workspace():
     """Return workspace metadata"""
     lair_data = get_lair()
