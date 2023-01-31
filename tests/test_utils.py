@@ -1,6 +1,7 @@
 import pytest
 import responses
 import json
+import os
 from uuid import uuid4
 
 from wayscript import settings, utils
@@ -55,3 +56,20 @@ def test__send_terminal_output():
     assert len(responses.calls) == 1
     assert responses.calls[0].request.url == expected_url
     assert json.loads(responses.calls[0].request.body) == expected_payload
+
+
+@pytest.mark.parametrize(
+    "method,env_var_name",
+    [
+        ("get_process_execution_user_token","WAYSCRIPT_EXECUTION_USER_TOKEN"),
+        ("get_process_id","WS_PROCESS_ID"),
+        ("get_application_key","WAYSCRIPT_EXECUTION_USER_TOKEN"),
+        ("get_lair_url","WAYSCRIPT_LAIR_URL"),
+    ]
+)
+def test__get_env_var(method, env_var_name):
+    """Test that getting environment variables functions as expected"""
+    callable = getattr(utils, method)
+    resp = callable()
+
+    assert resp == "TEST_SETTING"
