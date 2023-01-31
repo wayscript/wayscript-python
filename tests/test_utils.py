@@ -4,6 +4,7 @@ import json
 from uuid import uuid4
 
 from wayscript import settings, utils
+from unittest import mock
 
 
 @responses.activate
@@ -62,13 +63,16 @@ def test__send_terminal_output():
     [
         ("get_process_execution_user_token","WAYSCRIPT_EXECUTION_USER_TOKEN"),
         ("get_process_id","WS_PROCESS_ID"),
-        ("get_application_key","WAYSCRIPT_EXECUTION_USER_TOKEN"),
+        ("get_application_key","WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY"),
+        ("get_refresh_token","WAYSCRIPT_EXECUTION_USER_REFRESH_TOKEN"),
         ("get_lair_url","WAYSCRIPT_LAIR_URL"),
     ]
 )
 def test__get_env_var(method, env_var_name):
     """Test that getting environment variables functions as expected"""
-    callable = getattr(utils, method)
-    resp = callable()
+    expected = str(uuid4())
+    with mock.patch.dict('os.environ', { env_var_name: expected }, clear=True):
+        callable = getattr(utils, method)
+        resp = callable()
 
-    assert resp == "TEST_SETTING"
+        assert resp == expected
