@@ -1,7 +1,6 @@
 import pytest
 import responses
 import json
-import os
 from uuid import uuid4
 
 from wayscript import settings, utils
