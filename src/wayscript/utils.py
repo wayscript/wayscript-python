@@ -34,6 +34,11 @@ def get_application_key():
     return application_key
 
 
+def get_lair_url():
+    lair_url = os.environ["WAYSCRIPT_LAIR_URL"]
+    return lair_url
+
+
 def retry_on_401_wrapper(f):
 
     @functools.wraps(f)
